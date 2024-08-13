@@ -1,0 +1,5 @@
+clear all
+
+VideoDir = '';
+
+
