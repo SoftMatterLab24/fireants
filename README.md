@@ -21,7 +21,7 @@ fireants
 |    |    |    func1_video_to_frame.m - takes video of interest and extracts individual frames at specified sampling rate, then segments frames to logical image 
 |    |    |    func2_frame_to_nodes.m - take frame and creates N arbitrarily generated networks, writes data to ATOM.dump, BONDS.dump, and pairlist.in files.
 |    |    |    getBW.m - segments image to logical
-|    |    |    BWtoNodes.m - radomly packs the logical image with "ants" based on cutoff distance
+|    |    |    BWtoNodes.m - randomly packs the logical image with "ants" based on cutoff distance
 |    |    |    buildPairlist.m - create bonds between the ants if within cutoff distance
 |    |    |    writeATOMS.m - saves ant coordinates to ATOMS.dump for Ovitio visualization
 |    |    |    writeBONDS.m - saves bond information to BONDS.dump for Ovitio visualization
