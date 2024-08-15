@@ -3,7 +3,7 @@ This repository contains the necessary workflow to analyze the rigidity of arbit
 
 ## To Do
 - [ ] Aidan: document your cython scripts ... see [Formatting Syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) to see how to write text in the README
-- [ ] Aidan: upload python clusterproc scripts
+- [x] Aidan: upload python clusterproc scripts
 - [x] Aidan: download preproc scripts and do a test of the workflow with your clusterproc scripts [number of frames: 30; number of networks: 2] I added a video to the video folder for you to use
 - [ ] Zach: add ovitio instructions
 
