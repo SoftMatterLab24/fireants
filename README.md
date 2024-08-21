@@ -28,7 +28,7 @@ fireants
 |    |    |    writePAIRLIST.m - saves bond pairlist information for Cluster Analysis
 |    |
 |    |--- clusterproc
-|    |    |    func3_network_to_rigidity.py - takes pairlist from network then runs pebble game algorithm determines rigidity of each bond, then outputs data to BONDS.dump, clusterDist.out
+|    |    |    func3_network_to_rigidity.py - takes pairlist from network and runs pebble game algorithm determines rigidity of network, then outputs data to BONDS.dump, clusterDist.out
 |    |
 |    |--- postproc
 |    |    |
