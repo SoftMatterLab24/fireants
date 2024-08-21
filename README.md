@@ -37,13 +37,21 @@ fireants
 
 ```
 ## Executing the Workflow
-To execute the workflow, users first create a folder and place the desired video to be analyzed.
+To execute the workflow, users first create a $${\color{orange}\bf{folder}}$$ and place the desired video to be analyzed.
 
 ## Running Matlab .m Scripts
 
 
 ## Running Python
-   *Aidan document your code here and provide descriptions on how to operate the scripts*
+   To run the Python/Cython section one must have some Python version 3.xx.xx installed as well as Cython
+
+   To install compilers for Python type `sudo apt install python3` in linux terminal
+
+   To install compilers for Cython type `sudo apt install cython` in linux terminal
+   
+   To compile and run the code navigate to the directory of the clusterProc folder and copy the previously created $${\color{orange}\bf{folder}}$$ into the clusterProc folder 
+   
+   Then just input `python3 example.py build_ext pebble.pyx` into the linux terminal
 
 ## Visualization in Ovitio
   *lets work on adding a description on how to visualize the clusters*
