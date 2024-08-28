@@ -5,8 +5,8 @@ TrialDir = 'D:\CU_Boulder\Research\Fields\1 - Fire Ants\Ants - Contraction\video
 videoName = 'B4_Bulk.mp4';
 
 sampling_rate = 1;
-end_frame = 60;
-NetworkCount = 1;
+end_frame = 1;
+NetworkCount = 20;
 
 %%
 try
