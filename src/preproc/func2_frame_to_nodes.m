@@ -69,12 +69,15 @@ for kk = 1:length(names_frame)
         end
     end
     w = waitbar(0,'Generating Networks');
+
+    %%% FOR DEBUG CALIBRATION
+    BW = zeros(size(BW));
     %% Loop through and generate each network
-    for nn = 1:length(names_network)
-        waitbar(nn/length(names_network),w)
+   
+    parfor nn = 1:length(names_network)
+        %waitbar(nn/length(names_network),w)
         
-        %%% FOR DEBUG CALIBRATION
-        %BW = ones(size(BW));
+        
 
         [coords,limits,rho_network] = BWtoNodes(BW,px2meter,xi);
         NetworkWriteLocation = strcat(frame_loc,'\',names_network{nn});
@@ -93,8 +96,21 @@ for kk = 1:length(names_frame)
 end
 
 %% Visualization
-% boxchart(conn)
-% ylim([0 6])
-% hold on
-% yline(5.5,'k--')
-% disp('done')
+figure(1)
+boxchart(conn)
+ylim([0 6])
+hold on
+yline(5.5,'k--')
+xlabel('Frame 1')
+ylabel('Connectivity')
+disp('done')
+
+
+figure(2)
+boxchart(rho/1e6)
+ylim([0 .5])
+hold on
+yline(0.304,'k--')
+ylabel('Density (ants/mm^2)')
+xlabel('Frame 1')
+disp('done')

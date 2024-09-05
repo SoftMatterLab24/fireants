@@ -3,7 +3,7 @@ function [coords,limits,rho_network] = BWtoNodes(BW,px2meter,xi)
 %% Parameters
 %%% Density of ants %%%
 rho = 0.304*1e6;           % (ants/m2)
-dr  = xi*(1/sqrt(rho));         % Critical overlap distance
+dr  = xi*(1/sqrt(rho));    % Critical overlap distance
 
 %%% Single ant parameters %%%
 Lr = 2.93*1e-3;            % Length of one ant (m)
@@ -61,7 +61,7 @@ while 1 == 1
         fprintf('Filled %d particles in %g seconds\n',length(cps),toc)
         break
     end
-        
+
         %Randomly select points
         xg = (xmax-xmin).*rand(1,1) + xmin;
         yg = (ymax-ymin).*rand(1,1) + ymin;
@@ -145,7 +145,7 @@ end
 
 
     nants = length(cps);
-    Afrac = sum(BW,'all')/numel(BW);
+    Afrac = sum(~BW,'all')/numel(BW);
     rho_network = nants/(Afrac*Lx*Ly);
 if ioutput
     fprintf('True Raft Density: %4.4f ants m^-2. Artifical Raft Density: %4.4f ants m^-2',rho,rho_network)
