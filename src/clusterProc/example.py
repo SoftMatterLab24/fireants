@@ -60,57 +60,15 @@ while os.path.exists(f"{directory}/frame{countFrame}"):
         
         G = pebble.lattice() # initialize a lattice
         bond = read_bonds_from_file(f"{directory}/frame{countFrame}/network{countN}/pairlist.in")
-        #assert len(bond) == 6 # check bond number counting
-        print ('---------adding bond-----------')
         for i in bond:
             # add bond
-            if G.add_bond(i[0],i[1]): # if the bond is independent, add_bond returns True, otherwise False
-                print ('added bond %d --- %d, independent bond'%i)
-            else:
-                print ('added bond %d --- %d, redundant bond'%i)
-        print ('-------------------------------\n\n')
+            G.add_bond(i[0],i[1]) # if the bond is independent, add_bond returns True, otherwise False
 
         # check simple statistics:
         G.stat()
-        print ('---------statistics-----------')
-        print ('site number: %d'%G.statistics['site'])
-        print ('bond number: %d'%G.statistics['bond'])
-        print ('floppy mode count: %d'%G.statistics['floppy_mode'])
-        print ('state of self-stress counting: %d'%G.statistics['self_stress'])
-        print ('------------------------------\n\n')
-
-        # decompose into rigid components:
         G.decompose_into_cluster()
-        print ('---------rigid cluster-----------')
-        print ('cluster number: %d'%G.cluster['count'])
-        for key,value in G.cluster['index'].items():
-            print ('cluster %d has %d bonds'%(key,len(value)))
-            print ('the bonds are:')
-            for i in value:
-                print ('%d ------ %d'%i)
-        print ('---------------------------------\n\n')
-
-
-        # decompose stressed bond:
         G.decompose_stress()
-        print ('---------stressed bond-----------')
-        print ('there are %d stressed bond,they are:'%len(G.stress))
-        for i in G.stress:
-            print ('%d ------ %d'%i)
-        print ('---------------------------------\n\n')
-
-        # utilities:
-        print ('-----------utilities------------')
-        print ('test if 2 sites are relatively rigid:')
-        if G.collect_four_pebble(1,5):  # if 4 pebble can be collected, return True: the two sites are not rigid.
-            print ('site 1 and 5 are relatively floppy')
-        else:
-            print ('site 1 and 5 are relatively rigid')
-        #print ('raw graph:')
-        #print (G.graph)
-        #print ('raw directed graph with pebble number, format: {site number:[list of connected sites, pebble number]}')
-        #print (G.digraph)
-        print ('--------------------------------\n\n')
+    
 
 
         sorted_cluster_indices = sorted(G.cluster['index'], key=lambda cluster_index: len(G.cluster['index'][cluster_index]), reverse=True)
@@ -122,7 +80,7 @@ while os.path.exists(f"{directory}/frame{countFrame}"):
         second_entry_value = len(largest_two_entries[second_entry_key])  
         cluster_sizes = [len(G.cluster['index'][cluster_index]) for cluster_index in G.cluster['index']]
         folder_path = f"{directory}/frame{countFrame}/network{countN}"
-        file_path = os.path.join(folder_path, "BONDSS.dump")
+        file_path = os.path.join(folder_path, "BONDS.dump")
         with open(file_path, "w+") as file1:
             file1.write(f"ITEM: TIMESTEP\n0\nITEM: NUMBER OF ENTRIES\n{len(G.bond)}\nITEM: BOX BOUNDS ff ff ff\nxmin xmax\nymin ymax\nzmin zmax\nITEM: ENTRIES c_1[1] c_1[2]  c_1[3]    c_2[1]")
             for bondIndex, (node1, node2) in enumerate(G.bond):
@@ -142,7 +100,21 @@ while os.path.exists(f"{directory}/frame{countFrame}"):
                         rigidType = 1 if cluster_size >= 3 else 0
                     # Write the bond information to the file
                     file1.write(f"\n{bondIndex+1}\t{node1}\t{node2}\t{rigidType}")
-
+        file_path = os.path.join(folder_path, "pairlist.out")
+        with open(file_path, "w+") as file1:
+            for bondIndex, (node1, node2) in enumerate(G.bond):
+                    # Determine the cluster index for the bond
+                    cluster_index = G.cluster['bond'].get((node1, node2))
+                    cluster_size = len(G.cluster['index'][cluster_index])
+                    
+                    if cluster_index is None:
+                        rigidType = 0
+                    else:
+                        # Get the cluster size
+                        # Determine rigidity type based on cluster size
+                        rigidType = 1 if cluster_size >= 3 else 0
+                    # Write the bond information to the file
+                    file1.write(f"\n{node1}\t{node2}\t{rigidType}")
 
 
         cluster_bonds = {index: [] for index in G.cluster['index']}
