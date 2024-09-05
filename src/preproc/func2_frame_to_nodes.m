@@ -94,23 +94,23 @@ for kk = 1:length(names_frame)
     end
 
 end
-
+disp('done')
 %% Visualization
-figure(1)
-boxchart(conn)
-ylim([0 6])
-hold on
-yline(5.5,'k--')
-xlabel('Frame 1')
-ylabel('Connectivity')
-disp('done')
+% figure(1)
+% boxchart(conn)
+% ylim([0 6])
+% hold on
+% yline(5.5,'k--')
+% xlabel('Frame 1')
+% ylabel('Connectivity')
+% disp('done')
 
 
-figure(2)
-boxchart(rho/1e6)
-ylim([0 .5])
-hold on
-yline(0.304,'k--')
-ylabel('Density (ants/mm^2)')
-xlabel('Frame 1')
-disp('done')
+% figure(2)
+% boxchart(rho/1e6)
+% ylim([0 .5])
+% hold on
+% yline(0.304,'k--')
+% ylabel('Density (ants/mm^2)')
+% xlabel('Frame 1')
+% disp('done')
