@@ -50,7 +50,7 @@ To execute the workflow, users first create a $${\color{orange}\bf{folder}}$$ an
    
    To compile and run the code navigate to the directory of the clusterProc folder and copy the previously created $${\color{orange}\bf{folder}}$$ into the clusterProc folder 
    
-   Then just input `python3 example.py build_ext pebble.pyx` into the linux terminal
+   Then just input `python3 func3_network_to_rigidity.py build_ext pebble.pyx` into the linux terminal
 
 ## Visualization in Ovitio
   *lets work on adding a description on how to visualize the clusters*
