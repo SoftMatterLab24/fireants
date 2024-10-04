@@ -46,7 +46,7 @@ To execute the workflow, users first create a $${\color{orange}\bf{folder}}$$ an
 
    To install compilers for Python type `sudo apt install python3` in linux terminal
 
-   To install compilers for Cython type `sudo apt install cython` in linux terminal
+   To install compilers for Cython type `pip install cython` in linux terminal
    
    To compile and run the code navigate to the directory of the clusterProc folder and copy the previously created $${\color{orange}\bf{folder}}$$ into the clusterProc folder 
    
